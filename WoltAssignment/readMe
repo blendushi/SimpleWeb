@@ -1,0 +1,10 @@
+I did back-end using python and 
+front-end using typeScript and html(with css).
+
+For the inputs:
+I assumed that:
+    for the cart value, two decimals is enough.
+
+    for the distance, no decimals.
+
+    for the calendar, you can only make a delivery from today and beyond.
