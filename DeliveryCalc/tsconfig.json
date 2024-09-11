@@ -1,0 +1,6 @@
+{//compile the app.ts to app.js
+    "compilerOptions": {
+      "target": "es5",
+      "outFile": "app.js"
+    }
+}

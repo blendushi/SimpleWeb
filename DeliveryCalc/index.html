@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Fee Calculator</title>
+
+    <!-- Styling for the page -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #6fb4e0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 42%;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #6fb4e0;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #6fb4e0;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page title -->
+    <h3> 
+        Delivery Fee Calculator
+    </h3>
+
+    <!-- Input form for calculating delivery fee -->
+    <div>
+        <label>
+            Cart value:
+            <input type="number" min="0" step="0.01" oninput="validity.valid||(value='');" id="cartValue" /> €
+        </label>
+        <br />
+        <label>
+            Delivery distance:
+            <input type="number" min="0" step="1" oninput="validity.valid||(value='');" id="deliveryDistance" /> m
+        </label>
+        <br />
+        <label>
+            Number of items:
+            <input type="number" min="1" step="1" oninput="validity.valid||(value='');" id="numberOfItems" /> (pcs)
+        </label>
+        <br />
+        <label>
+            Time:
+            <input type="datetime-local" id="orderTime" onkeydown="return false" /> Choose From Calendar
+        </label>
+        <br />
+
+        <!-- Button to trigger the delivery fee calculation -->
+        <button onclick="calculateDeliveryFee()">Calculate Delivery Fee</button>
+        <br />
+
+        <!-- Display area for the result -->
+        <div id="result"></div>
+        
+        <!-- Script to set the minimum date for the order time input to be today onwards -->
+        <script>
+            // Set the minimum date for the order time input to be today onwards
+            const orderTimeInput = document.getElementById('orderTime');
+            const today = new Date();
+            const todayString = today.toISOString().slice(0, 16); // Format: YYYY-MM-DDTHH:mm
+            orderTimeInput.min = todayString;
+        </script>
+
+        <!-- External JavaScript file for additional functionality -->
+        <script src="app.js"></script>
+            
+        
+    </div>
+</body>
+
+</html>
